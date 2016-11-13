@@ -9,7 +9,21 @@ import (
 func main() {
   argsWithoutProg := os.Args[1:]
 
-  create_machine.Process(argsWithoutProg)
+  if (len(argsWithoutProg) == 0) {
+    PrintHelp()
+  }
 
-  fmt.Printf("Processing complete\n\n")
+  switch argsWithoutProg[0] {
+  case "machine":
+    create_machine.Process(argsWithoutProg[1:])
+  default:
+      PrintHelp()
+  }
+}
+
+func PrintHelp() {
+  fmt.Printf("ERROR: You need to pass a sub-command (e.g., bcbsup SUB-COMMAND):\n\n")
+  fmt.Printf("Available subcommands: (for details, bcbsup SUB-COMMAND --help)\n\n")
+  create_machine.PrintHelp()
+  os.Exit(1)
 }
