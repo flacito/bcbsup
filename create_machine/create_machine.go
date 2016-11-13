@@ -22,19 +22,25 @@ func Process(args []string) {
   case "create":
     CreateMachine(args[1:])
   default:
-      PrintHelp()
+    fmt.Printf("ERROR: unrecognized machine command:\n\n")
+    PrintCommands()
   }
 
 }
 
 func CreateMachine(args []string) {
+  if (len(args) != 1) {
+    PrintHelp()
+    os.Exit(1)
+  }
+
   // 1st arg is JSON, like '{"HostName":"hallo-tapco","MemorySizeGB":2,"CpuCount":2}'
   b := []byte(args[0])
 
   var m CreateMachineMessage
   e := json.Unmarshal(b, &m)
   if e != nil {
-      fmt.Printf("File error: %v\n", e)
+      fmt.Printf("JSON error: %v\n", e)
       os.Exit(1)
   }
 
@@ -47,6 +53,10 @@ func CreateMachine(args []string) {
 
 func PrintHelp() {
   fmt.Printf("ERROR: You need to pass the correct arguments to the machine subcommand (e.g., bcbsup machine SUB-COMMAND ARGUMENTS):\n\n")
+  PrintCommands()
+}
+
+func PrintCommands() {
   fmt.Printf("** MACHINE COMMANDS **\n")
   fmt.Printf("bcbsup machine create JSON\n")
 }
