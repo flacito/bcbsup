@@ -24,5 +24,9 @@ func main() {
       os.Exit(1)
   }
 
-	fmt.Printf("Processing create machine request:\n  %v\n",m.HostName)
+  fmt.Printf("\n")
+  fmt.Printf("Processing create machine request:\n")
+  fmt.Printf("  you want a machine named \033[0;32m%v\033[0m that has \033[0;32m%vGB\033[0m in memory and \033[0;32m%v CPUs\033[0m.\n", m.HostName, m.MemorySizeGB, m.CpuCount)
+  fmt.Printf("\n")
+  fmt.Printf("\n")
 }
