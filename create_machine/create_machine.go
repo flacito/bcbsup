@@ -40,8 +40,9 @@ func CreateMachine(args []string) {
   var m CreateMachineMessage
   e := json.Unmarshal(b, &m)
   if e != nil {
-      fmt.Printf("JSON error: %v\n", e)
-      os.Exit(1)
+    fmt.Printf("ERROR: there was a problem with the JSON object you specified: %v\n", e)
+    fmt.Printf("%v\n", args[0])
+    os.Exit(1)
   }
 
   fmt.Printf("\n")
