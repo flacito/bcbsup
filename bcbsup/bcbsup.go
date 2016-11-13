@@ -17,12 +17,12 @@ func main() {
   case "machine":
     create_machine.Process(argsWithoutProg[1:])
   default:
-      PrintHelp()
+    fmt.Printf("ERROR: You need to pass a sub-command (e.g., bcbsup SUB-COMMAND):\n\n")
+    PrintHelp()
   }
 }
 
 func PrintHelp() {
-  fmt.Printf("ERROR: You need to pass a sub-command (e.g., bcbsup SUB-COMMAND):\n\n")
   fmt.Printf("Available subcommands: (for details, bcbsup SUB-COMMAND --help)\n\n")
   create_machine.PrintHelp()
   os.Exit(1)
