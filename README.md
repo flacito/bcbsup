@@ -16,5 +16,5 @@ You can build and run the Docker containers by hand if you want, but for your co
 The JSON you send must mach what you see here. You can put whatever you want for the values, but you must include HostName, MemorySizeGB, and CpuCount. For example,
 
 ```
-run.sh '{"HostName":"hallo-tapco","MemorySizeGB":2,"CpuCount":2}'`
+./run.sh '{"HostName":"hallo-tapco","MemorySizeGB":2,"CpuCount":2}'`
 ```
