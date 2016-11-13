@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -it --rm --name create-machine-command create-machine-command create_machine $1
+docker run -it --rm --name create-machine-command create-machine-command bcbsup $1

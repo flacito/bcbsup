@@ -1,4 +1,4 @@
-package main
+package create_machine
 
 import (
   "fmt"
@@ -12,9 +12,8 @@ type CreateMachineMessage struct {
     CpuCount int
 }
 
-func main() {
+func Process(argsWithoutProg []string) {
   // 1st arg is JSON, like '{"HostName":"hallo-tapco","MemorySizeGB":2,"CpuCount":2}'
-  argsWithoutProg := os.Args[1:]
   b := []byte(argsWithoutProg[0])
 
   var m CreateMachineMessage
